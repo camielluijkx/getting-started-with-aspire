@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="BookStoreAspire.ApiService/BookStoreAspire.ApiService.csproj" />
+  <Project Path="BookStoreAspire.AppHost/BookStoreAspire.AppHost.csproj" />
+  <Project Path="BookStoreAspire.ServiceDefaults/BookStoreAspire.ServiceDefaults.csproj" />
+  <Project Path="BookStoreAspire.Web/BookStoreAspire.Web.csproj" />
+</Solution>

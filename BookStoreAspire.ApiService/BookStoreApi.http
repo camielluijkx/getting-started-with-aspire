@@ -1,0 +1,30 @@
+﻿@host = https://localhost:7553
+
+### Get all books
+GET {{host}}/books
+
+### Get a single book
+GET {{host}}/books/{{bookId}}
+
+### Create a new book
+POST {{host}}/books
+Content-Type: application/json
+
+{
+  "title": "The Pragmatic Programmer",
+  "author": "Andrew Hunt, David Thomas",
+  "price": 42.00
+}
+
+### Update an existing book
+PUT {{host}}/books/{{bookId}}
+Content-Type: application/json
+
+{
+  "title": "The Pragmatic Programmer (2nd Edition)",
+  "author": "Andrew Hunt, David Thomas",
+  "price": 49.00
+}
+
+### Delete a book
+DELETE {{host}}/books/{{bookId}}
