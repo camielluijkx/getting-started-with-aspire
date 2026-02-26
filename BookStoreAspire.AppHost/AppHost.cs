@@ -16,12 +16,14 @@ var booksDbConnection = builder.AddConnectionString("booksDb");
 var apiService = builder
     .AddProject<Projects.BookStoreAspire_ApiService>("bookstore-api")
     .WithReference(booksDbConnection)
-    .WithHttpHealthCheck("/health");
+    .WithHttpHealthCheck("/health")
+    .WithUrl("/swagger", "API Documentation");
 
 builder
     .AddProject<Projects.BookStoreAspire_Web>("bookstore-web")
     .WithExternalHttpEndpoints()
     .WithHttpHealthCheck("/health")
+    .WithUrl("/", "Web Application")
     .WithReference(apiService)
     .WaitFor(apiService);
 
