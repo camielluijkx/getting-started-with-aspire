@@ -1,0 +1,66 @@
+[26-06-2026]
+
+getting-started-with-aspire > Commit b223061 reuse existing postgresql instance
+
+https://codewithmukesh.com/blog/aspire-for-dotnet-developers-deep-dive
+
+.NET Aspire Tutorial - Build Cloud-Ready Apps with .NET 10 and PostgreSQL
+
+
+[26-06-2026]
+
+getting-started-with-aspire > Commit 22115c8 seed initial book data
+
+https://codewithmukesh.com/blog/aspire-for-dotnet-developers-deep-dive
+
+.NET Aspire Tutorial - Build Cloud-Ready Apps with .NET 10 and PostgreSQL
+
+1. Update EF tools
+
+	Update global EF CLI tool
+
+		dotnet tool update --global dotnet-ef
+
+	Verify installed version
+
+		dotnet ef --version
+
+2. Create new migration
+
+	Add a new (initial or seed) migration
+
+		dotnet ef migrations add SeedInitialBooks
+
+	Implement the Up and Down methods
+
+3. Run the application
+
+	Apply database migration
+
+		Database.Migrate() is automatically called at application startup
+
+4. pgAdmin is available at http://localhost:5050
+
+	Login:
+
+		Email Address / Username:		admin@admin.com
+		Password:						dbadminsecret
+
+	Servers:
+
+		Register > Server...
+
+			General
+				Name: PostgresLocal
+
+			Connection
+				Host name/address: postgres
+				Port: 5432
+				Maintenance database: booksDb
+				Username: dbuser
+				Password: dbusersecret
+
+		PostgresLocal > Databases > booksDb > Query Tool
+
+			SELECT * FROM public."Books"
+			ORDER BY "Id" ASC
