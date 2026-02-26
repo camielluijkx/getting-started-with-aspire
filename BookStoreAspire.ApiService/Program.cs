@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddOpenApi();
+
 var connectionString = builder.Configuration.GetConnectionString("booksDb")
     ?? throw new InvalidOperationException("Connection string 'booksDb' not found.");
 
@@ -15,10 +17,14 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
+    app.MapOpenApi();
+
     using var scope = app.Services.CreateScope();
     var db = scope.ServiceProvider.GetRequiredService<BookStoreDbContext>();
     db.Database.Migrate();
 }
+
+app.UseSwaggerUI(options => options.SwaggerEndpoint("/openapi/v1.json", "Swagger"));
 
 app.MapGet("/books", async (BookStoreDbContext db) =>
     await db.Books.AsNoTracking().ToListAsync());
